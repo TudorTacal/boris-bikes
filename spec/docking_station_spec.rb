@@ -14,4 +14,11 @@ describe DockingStation do
     bike.working?}
     it {is_expected.to be true}
   end
+
+  describe 'docks a bike and checks if there are any bikes docked' do
+    subject {docking_station = DockingStation.new
+    bike = Bike.new
+    docking_station.dock(bike)}
+    it {is_expected.to be true}
+  end
 end
