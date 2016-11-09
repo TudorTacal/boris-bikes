@@ -34,8 +34,7 @@ describe DockingStation do
   describe "print an error message if attempting to dock a bike into a full docking station" do
     it "should raise an exception" do
       docking_station = DockingStation.new
-      first_bike = Bike.new
-      docking_station.dock(first_bike)
+      20.times {docking_station.dock Bike.new}
       bike = Bike.new
       expect {docking_station.dock(bike)}.to raise_error("Docking station is full")
     end
