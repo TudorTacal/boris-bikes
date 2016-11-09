@@ -6,15 +6,13 @@ class DockingStation
     @docked_bike = []
   end
   def release_bike
-    if @docked_bike.empty?
-      raise "Docking station is empty"
-    else
+    raise "Docking station is empty" if @docked_bike.empty?
       Bike.new
-    end
   end
 
   def dock(bike)
-    @docked_bike << bike
-    @docked_bike.any?
+    raise "Docking station is full" if @docked_bike.count == 3
+      @docked_bike << bike
+      @docked_bike.any?
   end
 end
