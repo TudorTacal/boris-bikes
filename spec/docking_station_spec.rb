@@ -10,6 +10,8 @@ describe DockingStation do
 
   describe "gets bike and checks if it's working" do
     subject {docking_station = DockingStation.new
+    first_bike = Bike.new
+    docking_station.dock(first_bike)  
     bike = docking_station.release_bike
     bike.working?}
     it {is_expected.to be true}
@@ -20,5 +22,12 @@ describe DockingStation do
     bike = Bike.new
     docking_station.dock(bike)}
     it {is_expected.to be true}
+  end
+
+  describe " prints an error message if the docking station has no bikes" do
+    it "should raise an exception" do
+      docking_station=DockingStation.new
+      expect {docking_station.release_bike}.to raise_error("Docking station is empty")
+    end
   end
 end
